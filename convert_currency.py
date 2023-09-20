@@ -9,7 +9,7 @@ load_dotenv()
 API_KEY = os.getenv("API_KEY")
 
 
-def convert(want: str, have: str, value: float = 1):
+def convert(want: str, have: str, value: float = 1) -> float:
     """Конвертирует валюту"""
     api_url = f"https://api.api-ninjas.com/v1/convertcurrency?want={want}&have={have}&amount={value}"
     response = requests.get(api_url, headers={"X-Api-Key": API_KEY})
@@ -22,4 +22,5 @@ def convert(want: str, have: str, value: float = 1):
         print("Error")
 
 
-print(convert("RUB", "USD", 1))
+if __name__ == "__main__":
+    print(convert("RUB", "USD", 1))
